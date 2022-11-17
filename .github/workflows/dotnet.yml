@@ -38,3 +38,4 @@ jobs:
           dotnet tool restore
       - name: Build Release
         run: msbuild $env:Project_Path
+        
