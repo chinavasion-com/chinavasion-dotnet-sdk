@@ -11,7 +11,11 @@ on:
 
 jobs:
   build:
-
+    name: Build TerraSharp
+    env:
+      Solution_Path: Chinavasion.Net.sln
+      Project_Path: Chinavasion.Net/Chinavasion.Net.csproj
+      Actions_Allow_Unsecure_Commands: true
     runs-on: ubuntu-latest
 
     steps:
