@@ -1,4 +1,4 @@
-
+[![Build Chinavasion .Net SDK](https://github.com/marcwlux/Chinavasion/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/marcwlux/Chinavasion/actions/workflows/dotnet.yml)
 <p align="center">
     <a href="https://www.terrarebels.net/"><img src="https://learn.microsoft.com/en-us/windows/images/csharp-logo.png" align="center" width=150/></a>
 </p>
