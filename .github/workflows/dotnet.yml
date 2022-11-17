@@ -10,7 +10,7 @@ jobs:
   build:
     name: Build .Net SDK
     env:
-     Solution_Path: Chinavasion.Net/Chinavasion.Net.sln
+     Solution_Path: Chinavasion.Net.sln
      Project_Path: Chinavasion.Net/Chinavasion.Net.csproj
      Actions_Allow_Unsecure_Commands: true
 
@@ -38,3 +38,4 @@ jobs:
           dotnet tool restore
       - name: Build Release
         run: msbuild $env:Project_Path
+        
