@@ -16,7 +16,7 @@ jobs:
       Solution_Path: Chinavasion.Net.sln
       Project_Path: Chinavasion.Net/Chinavasion.Net.csproj
       Actions_Allow_Unsecure_Commands: true
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -24,9 +24,17 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Workload restore dependencies
+      run: dotnet workload restore
+      
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.1
+      
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+      
+    - name: Build Release
+      run: msbuild $env:Project_Path
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
