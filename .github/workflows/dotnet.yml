@@ -1,0 +1,40 @@
+name: Build Chinavasion .Net SDK
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: Build .Net SDK
+    env:
+     Solution_Path: Chinavasion.Net.sln
+     Project_Path: Chinavasion.Net/Chinavasion.Net.csproj
+     Actions_Allow_Unsecure_Commands: true
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            6.0.x
+      - name: Workload restore dependencies
+        run: dotnet workload restore
+        
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
+         
+      - name: Install tools
+        run: |
+          dotnet tool restore
+      - name: Build Release
+        run: msbuild $env:Project_Path
